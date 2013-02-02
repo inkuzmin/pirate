@@ -1,14 +1,28 @@
-lastFM = new LastFM()
+class Router
+	constructor: (@bitRater, @lastFM) ->
 
-safari.application.addEventListener "message", routeMessage, false
+	routeMessage: (message) ->
+		cmd = message.name
+		switch cmd
+	  		when "getSettings"			then @_getSettings message
+	  		when "getBitrate"			then @_getBitrate message
+	  		when "getLastFMToken" 		then @_getLastFMToken message
+	  		when "setLasfFMPlayingNow"	then @_setLasfFMPlayingNow message
+	  		when "scrobble"				then @_scrobble message
+	  		else 						@_log message
 
-routeMessage = (message) ->
-	cmd = message.name
-	switch cmd
-  		when "getSettings" then 0
-  		when "getBitrate" then 0
-  		when "getLastFMToken" then 0
-  		when "setLasfFMPlayingNow" then 0
-  		when "scrobble" then 0
-  		else console.log "Unknowm command #{ cmd }"
+	_getSettings: (message) ->
 
+	_getBitrate: (message) ->
+
+	_getLastFMToken: (message) ->
+
+	_setLasfFMPlayingNow: (message) ->
+
+	_scrobble: (message) ->
+
+	_log: (message) ->
+
+
+router = new Router( new BitRater(), new LastFM() )
+safari.application.addEventListener "message", router.routeMessage, false
