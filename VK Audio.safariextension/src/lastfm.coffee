@@ -1,0 +1,2 @@
+class VKAudio.LastFM
+	constuctor: ->

@@ -14,6 +14,7 @@ class Router
 	_getSettings: (message) ->
 
 	_getBitrate: (message) ->
+		
 
 	_getLastFMToken: (message) ->
 
@@ -22,7 +23,9 @@ class Router
 	_scrobble: (message) ->
 
 	_log: (message) ->
+		console.log message
 
 
-router = new Router( new BitRater(), new LastFM() )
+broadcaster = new VKAudio.Broadcaster()
+router = new Router( new VKAudio.BitRater(), new VKAudio.LastFM() )
 safari.application.addEventListener "message", router.routeMessage, false
