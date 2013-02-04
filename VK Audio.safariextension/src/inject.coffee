@@ -1,5 +1,4 @@
 if window.top is window
-	
 
 	document.addEventListener "mousemove", (event) ->
         testTarget event.target

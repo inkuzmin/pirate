@@ -1,31 +1,29 @@
 class Router
-	constructor: (@bitRater, @lastFM) ->
+	constructor: (@bitrater, @lastFM) ->
 
-	routeMessage: (message) ->
-		cmd = message.name
+	routeMessage: (event) ->
+		cmd = event.name
 		switch cmd
-	  		when "getSettings"			then @_getSettings message
-	  		when "getBitrate"			then @_getBitrate message
-	  		when "getLastFMToken" 		then @_getLastFMToken message
-	  		when "setLasfFMPlayingNow"	then @_setLasfFMPlayingNow message
-	  		when "scrobble"				then @_scrobble message
-	  		else 						@_log message
+	  		when "getSettings"			then @_getSettings event
+	  		when "getBitrate"			then @_getBitrate event
+	  		when "getLastFMToken" 		then @_getLastFMToken event
+	  		when "setLasfFMPlayingNow"	then @_setLasfFMPlayingNow event
+	  		when "scrobble"				then @_scrobble event
+	  		else 						@_log event
 
-	_getSettings: (message) ->
+	_getSettings: (event) ->
 
-	_getBitrate: (message) ->
-		
+	_getBitrate: (event) ->
+		@bitrater.getBitrate event
 
-	_getLastFMToken: (message) ->
+	_getLastFMToken: (event) ->
 
-	_setLasfFMPlayingNow: (message) ->
+	_setLasfFMPlayingNow: (event) ->
 
-	_scrobble: (message) ->
+	_scrobble: (event) ->
 
-	_log: (message) ->
-		console.log message
+	_log: (event) ->
+		console.log event
 
-
-broadcaster = new VKAudio.Broadcaster()
-router = new Router( new VKAudio.BitRater(), new VKAudio.LastFM() )
+router = new Router( new VKAudio.Bitrater(), new VKAudio.LastFM() )
 safari.application.addEventListener "message", router.routeMessage, false
