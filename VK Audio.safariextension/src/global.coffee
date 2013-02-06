@@ -1,7 +1,7 @@
 class Router
 	constructor: (@bitrater, @lastFM) ->
 
-	routeMessage: (event) ->
+	routeMessage: (event) =>
 		cmd = event.name
 		switch cmd
 	  		when "getSettings"			then @_getSettings event

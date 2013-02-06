@@ -30,6 +30,10 @@
 				<string>lib/inject.js</string>
 			</array>
 		</dict>
+		<key>Stylesheets</key>
+		<array>
+			<string>css/style.css</string>
+		</array>
 	</dict>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>

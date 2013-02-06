@@ -1,10 +1,10 @@
 class VKAudio.Bitrater
 	constructor: ->
 
-	_requestContentLength: (event) ->
+	_requestContentLength: (event) =>
 		audioUrl = event.message.url
 		xhr = new XMLHttpRequest()
-		xhr.onreadychange = ->
+		xhr.onreadystatechange = =>
 			if xhr.readyState is 4 and xhr.status is 200
 				@_calculateBitrate event, xhr.getResponseHeader("Content-Length")
 		xhr.open "HEAD", audioUrl, true
@@ -15,6 +15,6 @@ class VKAudio.Bitrater
 		bitrate = ((size * 8) / audio.duration / 1000).toFixed()
 		event.target.page.dispatchMessage "setBitrate", {bitrate: bitrate, id: audio.id}
 
-	getBitrate: (event) ->
-		@_requestContentLength(event)
+	getBitrate: (event) =>
+		@_requestContentLength event
 		
