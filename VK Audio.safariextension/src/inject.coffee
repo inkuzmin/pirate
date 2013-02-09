@@ -9,7 +9,7 @@ if window.top is window
         collectNodes: ->
             document.getElementsByClassName "play_new"
 
-        buildObjectsFromNodes: ->
+        parseNodes: ->
             @nodes = @collectNodes()
             for node in @nodes
                 
@@ -36,9 +36,8 @@ if window.top is window
             @getBitrate()
 
         getBitrate: ->
-            console.log "enter in getBitrate"
             inputNodeId = @id.replace "play", "audio_info"
-                
+            
             inputNode = document.getElementById inputNodeId
             audioData = inputNode.value.match /(https?:\/\/.+\.(?:vkontakte\.ru|vk\.com|userapi\.com)\/.*.mp3),([0-9]+)/i
             
@@ -46,22 +45,50 @@ if window.top is window
             audioDuration = audioData[2]
 
             safari.self.tab.dispatchMessage "getBitrate", {url: audioUrl, duration: audioDuration, id: @id}
-            console.log "exit of getBitrate"
 
         setBitrate: (@bitrate) ->
-            console.log "set bitrate"
 
         createLink: ->
             true
 
+        createBitrateNode: ->
+            @divNode = document.createElement "div"
+            addClass @divNode, "vkaudioBitrate"
+            @divNode.innerHTML = @bitrate
+            insertAfter @node, @divNode
+
         showBitrate: ->
-            console.log "show bitrate"
-            divNode = document.createElement "div"
-            divNode.className = "bitrate"
-            divNode.innerHTML = "#{ @bitrate } kbit/s"
-            insertAfter @node, divNode
+            interval = setInterval =>
+                if @bitrate
+                    colorClass = ""
+                    if @bitrate > 315
+                        colorClass = "green"
+                    else if 250 < @bitrate <= 315
+                        colorClass = "blue"
+                    else if 120 < @bitrate <= 250
+                        colorClass = "orange"
+                    else if 60 < @bitrate <= 120
+                        colorClass = "red"
+                    else
+                        colorClass = "brown"
+
+                    if not @divNode
+                        @createBitrateNode()
+
+                    removeClass @divNode, "vkaudioHidden"
+                    addClass @divNode, "vkaudioShown"
+                    addClass @divNode, colorClass
+                    clearInterval interval
+            ,100
+
 
         hideBitrate: ->
+            interval = setInterval =>
+                if @bitrate
+                    removeClass @divNode, "vkaudioShown"
+                    addClass @divNode, "vkaudioHidden"
+                    clearInterval interval
+            ,100
 
         setLink: ->
 
@@ -115,6 +142,13 @@ if window.top is window
     insertAfter = (targetNode, newNode) ->
         targetNode.parentNode.insertBefore newNode, targetNode.nextSibling
 
+    addClass = (node, newClassName) ->
+        node.className += " #{newClassName}"
+
+    removeClass = (node, oldClassName) ->
+        node.className = node.className.replace oldClassName, ""
+
+
 
     # Listeners
     safari.self.addEventListener "message", route, false
@@ -122,13 +156,21 @@ if window.top is window
     # document.addEventListener "mousemove", (event) ->
     #     testTargetForPlayButton event.target
     # , false
-    # 
     
     audios = new VKAudioCollection
-    audios.buildObjectsFromNodes()
 
+    altKeyPressed = false
     document.addEventListener "keydown", (event) ->
         if event.altKey
-            console.log "alt pressed"
+            # Тут баг с двойным нажатием 
+            altKeyPressed = true
+            audios.parseNodes()
             audios.showBitrates()
     , false
+
+    document.addEventListener "keyup", (event) ->
+        if altKeyPressed
+            audios.hideBitrates()
+            altKeyPressed = false
+    , false
+
