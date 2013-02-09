@@ -2,7 +2,7 @@
 (function() {
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
-  VKAudio.Bitrater = (function() {
+  App.Bitrater = (function() {
 
     function Bitrater() {
       this.getBitrate = __bind(this.getBitrate, this);

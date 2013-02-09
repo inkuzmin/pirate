@@ -25,5 +25,5 @@ class Router
 	_log: (event) ->
 		console.log event
 
-router = new Router( new VKAudio.Bitrater(), new VKAudio.LastFM() )
+router = new Router( new App.Bitrater(), new App.LastFM() )
 safari.application.addEventListener "message", router.routeMessage, false

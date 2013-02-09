@@ -1,4 +1,4 @@
-class VKAudio.Bitrater
+class App.Bitrater
 	constructor: ->
 
 	_requestContentLength: (event) =>
@@ -14,6 +14,7 @@ class VKAudio.Bitrater
 		audio = event.message
 		bitrate = ((size * 8) / audio.duration / 1000).toFixed()
 		event.target.page.dispatchMessage "setBitrate", {bitrate: bitrate, id: audio.id}
+		#audio.object.setBitrate bitrate
 
 	getBitrate: (event) =>
 		@_requestContentLength event

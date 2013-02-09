@@ -1,2 +1,2 @@
-class VKAudio.LastFM
+class App.LastFM
 	constuctor: ->
