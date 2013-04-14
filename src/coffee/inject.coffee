@@ -39,7 +39,7 @@ if window.top is window
             inputNodeId = @id.replace "play", "audio_info"
             
             inputNode = document.getElementById inputNodeId
-            audioData = inputNode.value.match /(https?:\/\/.+\.(?:vkontakte\.ru|vk\.com|userapi\.com)\/.*.mp3),([0-9]+)/i
+            audioData = inputNode.value.match /(https?:\/\/.+\.(?:vkontakte\.ru|vk\.com|userapi\.com|vk\.me)\/.*.mp3),([0-9]+)/i
             
             audioUrl = audioData[1]
             audioDuration = audioData[2]

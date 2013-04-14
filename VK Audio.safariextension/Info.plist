@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Ivan Kuzmin</string>
 	<key>Builder Version</key>
-	<string>8536.26.17</string>
+	<string>8536.28.10</string>
 	<key>CFBundleDisplayName</key>
 	<string>VK Audio</string>
 	<key>CFBundleIdentifier</key>
@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.4</string>
+	<string>2.7</string>
 	<key>CFBundleVersion</key>
-	<string>2.4.500</string>
+	<string>2.7</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
@@ -27,12 +27,12 @@
 		<dict>
 			<key>End</key>
 			<array>
-				<string>lib/inject.js</string>
+				<string>js/inject.min.js</string>
 			</array>
 		</dict>
 		<key>Stylesheets</key>
 		<array>
-			<string>css/style.css</string>
+			<string>css/style.min.css</string>
 		</array>
 	</dict>
 	<key>ExtensionInfoDictionaryVersion</key>

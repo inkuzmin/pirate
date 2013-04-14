@@ -25,5 +25,5 @@ class Router
 	_log: (event) ->
 		console.log event
 
-router = new Router( new App.Bitrater(), new App.LastFM() )
+router = new Router( new Bitrater(), new LastFM() )
 safari.application.addEventListener "message", router.routeMessage, false

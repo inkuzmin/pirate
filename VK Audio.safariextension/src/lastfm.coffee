@@ -1,2 +1,0 @@
-class App.LastFM
-	constuctor: ->

@@ -1,4 +1,4 @@
-class App.Bitrater
+class Bitrater
 	constructor: ->
 
 	_requestContentLength: (event) =>
@@ -17,4 +17,3 @@ class App.Bitrater
 
 	getBitrate: (event) =>
 		@_requestContentLength event
-		
