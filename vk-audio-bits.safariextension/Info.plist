@@ -3,21 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>Author</key>
-	<string>Ivan Kuzmin</string>
+	<string>inkuzmin</string>
 	<key>Builder Version</key>
 	<string>8536.28.10</string>
 	<key>CFBundleDisplayName</key>
-	<string>VK Audio</string>
+	<string>vk-audio-bits</string>
 	<key>CFBundleIdentifier</key>
-	<string>ru.inkuzmin.vkaudio</string>
+	<string>ru.inkuzmin.vk-audio</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.7</string>
+	<string>1.25</string>
 	<key>CFBundleVersion</key>
-	<string>2.7</string>
+	<string>1.25</string>
 	<key>Chrome</key>
 	<dict>
+		<key>Database Quota</key>
+		<real>1048576</real>
 		<key>Global Page</key>
 		<string>global.html</string>
 	</dict>
@@ -27,25 +29,32 @@
 		<dict>
 			<key>End</key>
 			<array>
-				<string>js/inject.min.js</string>
+				<string>js/inject.js</string>
 			</array>
 		</dict>
-		<key>Stylesheets</key>
-		<array>
-			<string>css/style.min.css</string>
-		</array>
 	</dict>
+	<key>Description</key>
+	<string>Show information about tracks'  bit rates at vk.com</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>
 	<dict>
 		<key>Website Access</key>
 		<dict>
+			<key>Allowed Domains</key>
+			<array>
+				<string>*.vk.com</string>
+				<string>*.userapi.com</string>
+				<string>*.audioscrobbler.com</string>
+				<string>*.vk.me</string>
+			</array>
 			<key>Include Secure Pages</key>
 			<true/>
 			<key>Level</key>
-			<string>All</string>
+			<string>Some</string>
 		</dict>
 	</dict>
+	<key>Website</key>
+	<string>https://github.com/inkuzmin/vk-audio-bits</string>
 </dict>
 </plist>
