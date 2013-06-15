@@ -1,5 +1,1 @@
-This is simple Safari extension, that shows bit rates under tracks'
- play buttons.
-
-To download extension click on vk-audio-bits.safariextz and press
-"Raw".
+This is simple Safari extension, that shows bit rates under play buttons and scrobbles music from vk.com to last.fm.
