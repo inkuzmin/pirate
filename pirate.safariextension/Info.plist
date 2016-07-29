@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>inkuzmin</string>
 	<key>Builder Version</key>
-	<string>8536.29.13</string>
+	<string>11601.7.7</string>
 	<key>CFBundleDisplayName</key>
 	<string>Pirate</string>
 	<key>CFBundleIdentifier</key>
@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.25</string>
+	<string>1.3</string>
 	<key>CFBundleVersion</key>
-	<string>1.25</string>
+	<string>1.3</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Database Quota</key>
@@ -35,6 +35,8 @@
 	</dict>
 	<key>Description</key>
 	<string>Show information about tracks'  bit rates at vk.com and scrobble them to last.fm</string>
+	<key>DeveloperIdentifier</key>
+	<string>9V5D734648</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>
@@ -46,7 +48,7 @@
 				<string>*.vk.com</string>
 				<string>*.userapi.com</string>
 				<string>*.audioscrobbler.com</string>
-				<string>*.vk.me</string>
+				<string>*</string>
 			</array>
 			<key>Include Secure Pages</key>
 			<true/>

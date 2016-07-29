@@ -182,7 +182,8 @@ if (window.top === window) {
                 div.style.marginTop = '-2px';
                 div.style.color = 'grey';
                 div.style.fontSize = '10px';
-                div.innerHTML = bitrate + ' kbit/s';
+                div.innerHTML = bitrate;
+                div.title = bitrate + ' kbit/s';
                 insertAfter(aNode, div);
             }
         }
@@ -196,11 +197,11 @@ if (window.top === window) {
         var target = e.target;
 
         if (target.className == "play_new") {
-            if (ids.indexOf(target.id) == -1) {
+            try {
                 var elementNode = document.getElementById(target.id);
                 var parentNode = elementNode.parentNode;
                 var inputNode = parentNode.nextSibling.nextSibling;
-                var mp3 = inputNode.value.match(/(https?:\/\/.+\.(?:vkontakte\.ru|vk\.com|userapi\.com|vk\.me)\/.*.mp3),([0-9]+)/i);
+                var mp3 = inputNode.value.match(/(https?:\/\/.*.mp3).*,([0-9]+)/i);
                 var aNode = document.createElement('a');
                 aNode.href = mp3[1];
                 var ident = Math.floor(Math.random(0, 100000) * 1000000000000000000);
@@ -209,8 +210,7 @@ if (window.top === window) {
                 aNode.appendChild(elementNode);
                 parentNode.appendChild(aNode);
                 safari.self.tab.dispatchMessage("getBitrate", {url:mp3[1], duration:mp3[2], id:ident});
-                ids.push(target.id);
-            }
+            } catch (err) {}
         }
 
     };
